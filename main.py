@@ -11,7 +11,6 @@ def convert_files():
         for filename in os.listdir(dir1):
                 if not filename.startswith('.'):
                         f = os.path.join(dir1, filename)
-                        print(f)
                         im = Image.open(f)
                         rgb_im = im.convert("RGB").rotate(270).resize((128, 128)).save(dir2 + filename + ".jpeg")
 
