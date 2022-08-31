@@ -1,16 +1,19 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#!/usr/bin/python3
 
+from PIL import Image
+import os
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def convert_files():
+        dir1 = "images"
+        dir2 = "/opt/icons/"
 
+        for filename in os.listdir(dir1):
+                if not filename.startswith('.'):
+                        f = os.path.join(dir1, filename)
+                        print(f)
+                        im = Image.open(f)
+                        rgb_im = im.convert("RGB").rotate(270).resize((128, 128)).save(dir2 + filename + ".jpeg")
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        convert_files()
